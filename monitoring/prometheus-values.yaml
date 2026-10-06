@@ -1,0 +1,23 @@
+alertmanager:
+  enabled: false
+
+grafana:
+  adminPassword: admin123
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      searchNamespace: ALL
+
+prometheus:
+  prometheusSpec:
+    scrapeInterval: 15s
+    retention: 1d
+    serviceMonitorSelectorNilUsesHelmValues: false
+    ruleSelectorNilUsesHelmValues: false
+    resources:
+      requests:
+        cpu: 200m
+        memory: 400Mi
+      limits:
+        memory: 1Gi

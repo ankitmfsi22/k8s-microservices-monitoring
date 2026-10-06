@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  namespace: monitoring-app
+  labels:
+    app: microservices
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /submit
+            pathType: Prefix
+            backend:
+              service:
+                name: service-a-svc
+                port:
+                  number: 8080
+          - path: /status
+            pathType: Prefix
+            backend:
+              service:
+                name: service-a-svc
+                port:
+                  number: 8080

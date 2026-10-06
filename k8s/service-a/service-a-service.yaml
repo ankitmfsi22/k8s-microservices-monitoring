@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-a-svc
+  namespace: monitoring-app
+  labels:
+    app: service-a
+spec:
+  type: LoadBalancer
+  selector:
+    app: service-a
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 3000
