@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: service-c-monitor
+  namespace: monitoring
+  labels:
+    app: service-c
+    release: prometheus
+spec:
+  namespaceSelector:
+    matchNames:
+      - monitoring-app
+  selector:
+    matchLabels:
+      app: service-c
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
+      scrapeTimeout: 10s
