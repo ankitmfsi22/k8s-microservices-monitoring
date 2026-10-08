@@ -1,5 +1,5 @@
 import client from 'prom-client';
-import { getStats } from './stats.js';
+import { getStats } from './stats';
 
 export const register = new client.Registry();
 client.collectDefaultMetrics({ register });
@@ -34,7 +34,7 @@ const avgTime = new client.Gauge({
   registers: [register],
 });
 
-export async function refreshMetrics() {
+export async function refreshMetrics(): Promise<void> {
   const s = await getStats();
   submitted.set(s.totalJobsSubmitted);
   completed.set(s.totalJobsCompleted);

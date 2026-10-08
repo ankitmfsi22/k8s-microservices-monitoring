@@ -1,12 +1,20 @@
-import { KEYS } from './config.js';
-import { redis } from './redis.js';
+import { KEYS } from './config';
+import { redis } from './redis';
 
-export async function getStats() {
-  const [counters, queueLength] = await redis
+export interface Stats {
+  totalJobsSubmitted: number;
+  totalJobsCompleted: number;
+  totalJobsFailed: number;
+  queueLength: number;
+  avgProcessingTimeSeconds: number;
+}
+
+export async function getStats(): Promise<Stats> {
+  const [counters, queueLength] = (await redis
     .multi()
     .mGet([KEYS.submitted, KEYS.completed, KEYS.failed, KEYS.totalProcessingTime])
     .lLen(KEYS.queue)
-    .exec();
+    .exec()) as [Array<string | null>, number];
 
   const [submitted, completed, failed, totalTime] = counters.map((v) => Number(v) || 0);
 

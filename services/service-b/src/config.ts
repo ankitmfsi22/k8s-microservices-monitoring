@@ -6,7 +6,7 @@ export const config = {
 
 export const KEYS = {
   queue: 'jobs:queue',
-  job: (id) => `job:${id}`,
+  job: (id: string) => `job:${id}`,
   completed: 'stats:completed',
   failed: 'stats:failed',
   totalProcessingTime: 'stats:total_processing_time',

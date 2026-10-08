@@ -1,15 +1,16 @@
-import { config, KEYS } from './config.js';
-import { redis, blockingRedis } from './redis.js';
-import { TASKS } from './tasks.js';
-import { jobsProcessed, jobErrors, jobProcessingTime } from './metrics.js';
+import { config, KEYS } from './config';
+import { redis, blockingRedis } from './redis';
+import { TASKS } from './tasks';
+import { jobsProcessed, jobErrors, jobProcessingTime } from './metrics';
 
 let running = true;
 
-export function stopWorker() {
+export function stopWorker(): void {
   running = false;
 }
 
-async function processJob(id) {
+// Process a single job: run its task, save the result, update counters and metrics
+export async function processJob(id: string): Promise<void> {
   const jobKey = KEYS.job(id);
   const taskType = await redis.hGet(jobKey, 'taskType');
 
@@ -44,28 +45,32 @@ async function processJob(id) {
     jobsProcessed.inc({ task_type: taskType });
     jobProcessingTime.observe({ task_type: taskType }, seconds);
   } catch (err) {
+    const message = (err as Error).message;
+
     await redis
       .multi()
-      .hSet(jobKey, { status: 'failed', error: err.message, completedAt: new Date().toISOString() })
+      .hSet(jobKey, { status: 'failed', error: message, completedAt: new Date().toISOString() })
       .incr(KEYS.failed)
       .exec();
 
     jobErrors.inc({ task_type: taskType });
-    console.error(`[worker] job ${id} failed:`, err.message);
+    console.error(`[worker] job ${id} failed:`, message);
   }
 }
-export async function runWorker() {
+
+// Single long-running loop: wait for a job, process it, repeat
+export async function runWorker(): Promise<void> {
   console.log('[worker] started, waiting for jobs');
 
   while (running) {
     try {
       const item = await blockingRedis.brPop(KEYS.queue, config.pollTimeoutSeconds);
-      if (!item) continue;
+      if (!item) continue; // timeout, no job: loop again and re-check `running`
 
       await processJob(item.element);
     } catch (err) {
-      console.error('[worker] loop error:', err.message);
-      await new Promise((r) => setTimeout(r, 1000));
+      console.error('[worker] loop error:', (err as Error).message);
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // back off briefly
     }
   }
 
