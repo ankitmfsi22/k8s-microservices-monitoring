@@ -1,0 +1,137 @@
+19:27:10  queue: 0  pods: 2
+19:27:15  queue: 0  pods: 2
+19:27:21  queue: 0  pods: 2
+19:27:26  queue: 0  pods: 2
+19:27:31  queue: 0  pods: 2
+19:27:37  queue: 0  pods: 2
+19:27:42  queue: 0  pods: 2
+19:27:47  queue: 0  pods: 2
+19:27:52  queue: 0  pods: 2
+19:27:57  queue: 0  pods: 2
+19:28:03  queue: 0  pods: 2
+19:28:08  queue: 835  pods: 2
+19:28:13  queue: 3433  pods: 2
+19:28:19  queue: 4772  pods: 2
+19:28:25  queue: 4655  pods: 2
+19:28:30  queue: 4553  pods: 2
+19:28:35  queue: 4430  pods: 2
+19:28:40  queue: 4300  pods: 2
+19:28:46  queue: 4182  pods: 2
+19:28:51  queue: 4073  pods: 2
+19:28:57  queue: 3948  pods: 2
+19:29:02  queue: 3828  pods: 2
+19:29:07  queue: 3700  pods: 2
+19:29:12  queue: 3588  pods: 2
+19:29:17  queue: 3481  pods: 2
+19:29:23  queue: 3417  pods: 2
+19:29:28  queue: 3311  pods: 2
+19:29:34  queue: 3199  pods: 2
+19:29:39  queue: 3141  pods: 2
+19:29:47  queue: 3087  pods: 2
+19:29:53  queue: 3001  pods: 5
+19:30:08  queue: 2872  pods: 6
+19:30:22  queue: 2809  pods: 6
+19:30:34  queue: 2694  pods: 7
+19:30:52  queue: 2612  pods: 9
+19:31:02  queue: 2545  pods: 8
+19:31:12  queue: 2448  pods: 8
+19:31:25  queue: 2302  pods: 8
+19:31:56  queue: 2067  pods: 10  hpa: 162%/70% 10
+19:32:11  queue: 1951  pods: 10  hpa: 162%/70% 10
+19:32:25  queue: 1872  pods: 9  hpa: 163%/70% 10
+19:32:34  queue: 1781  pods: 8  hpa: 163%/70% 10
+19:32:45  queue: 1688  pods: 8  hpa: 163%/70% 10
+19:32:57  queue: 1566  pods: 10  hpa: 163%/70% 10
+19:33:07  queue: 1431  pods: 10  hpa: 163%/70% 10
+19:33:17  queue: 1295  pods: 10  hpa: 163%/70% 10
+19:33:23  queue: 1147  pods: 10  hpa: 163%/70% 10
+19:33:30  queue: 1022  pods: 10  hpa: 187%/70% 10
+19:33:37  queue: 904  pods: 10  hpa: 187%/70% 10
+19:33:47  queue: 762  pods: 10  hpa: 187%/70% 10
+19:33:56  queue: 606  pods: 10  hpa: 187%/70% 10
+19:34:04  queue: 460  pods: 10  hpa: 187%/70% 10
+19:34:10  queue: 319  pods: 10  hpa: 187%/70% 10
+19:34:17  queue: 119  pods: 10  hpa: 187%/70% 10
+19:34:29  queue: 0  pods: 10  hpa: 187%/70% 10
+19:34:37  queue: 0  pods: 10  hpa: 234%/70% 10
+19:34:43  queue: 0  pods: 10  hpa: 234%/70% 10
+19:34:48  queue: 0  pods: 10  hpa: 234%/70% 10
+19:34:53  queue: 0  pods: 10  hpa: 234%/70% 10
+19:34:59  queue: 0  pods: 10  hpa: 234%/70% 10
+19:35:04  queue: 0  pods: 10  hpa: 234%/70% 10
+19:35:10  queue: 0  pods: 10  hpa: 234%/70% 10
+19:35:15  queue: 0  pods: 10  hpa: 234%/70% 10
+19:35:22  queue: 0  pods: 10  hpa: 234%/70% 10
+19:35:27  queue: 0  pods: 10  hpa: 234%/70% 10
+19:35:33  queue: 0  pods: 10  hpa: 234%/70% 10
+19:35:38  queue: 0  pods: 10  hpa: 70%/70% 10
+19:35:44  queue: 0  pods: 10  hpa: 70%/70% 10
+19:35:49  queue: 0  pods: 10  hpa: 70%/70% 10
+19:35:54  queue: 0  pods: 10  hpa: 70%/70% 10
+19:36:00  queue: 0  pods: 10  hpa: 70%/70% 10
+19:36:06  queue: 0  pods: 10  hpa: 70%/70% 10
+19:36:11  queue: 0  pods: 10  hpa: 70%/70% 10
+19:36:16  queue: 0  pods: 10  hpa: 70%/70% 10
+19:36:22  queue: 0  pods: 10  hpa: 70%/70% 10
+19:36:27  queue: 0  pods: 10  hpa: 70%/70% 10
+19:36:33  queue: 0  pods: 10  hpa: 70%/70% 10
+19:36:38  queue: 0  pods: 10  hpa: 16%/70% 10
+19:36:45  queue: 0  pods: 10  hpa: 16%/70% 10
+19:36:50  queue: 0  pods: 10  hpa: 16%/70% 10
+19:36:56  queue: 0  pods: 10  hpa: 16%/70% 10
+19:37:01  queue: 0  pods: 10  hpa: 16%/70% 10
+19:37:06  queue: 0  pods: 10  hpa: 16%/70% 10
+19:37:12  queue: 0  pods: 10  hpa: 16%/70% 10
+19:37:17  queue: 0  pods: 10  hpa: 16%/70% 10
+19:37:22  queue: 0  pods: 10  hpa: 16%/70% 10
+19:37:28  queue: 0  pods: 10  hpa: 16%/70% 10
+19:37:33  queue: 0  pods: 10  hpa: 16%/70% 10
+19:37:38  queue: 0  pods: 10  hpa: 17%/70% 10
+19:37:44  queue: 0  pods: 10  hpa: 17%/70% 10
+19:37:49  queue: 0  pods: 10  hpa: 17%/70% 10
+19:37:54  queue: 0  pods: 10  hpa: 17%/70% 10
+19:38:00  queue: 0  pods: 10  hpa: 17%/70% 10
+19:38:05  queue: 0  pods: 10  hpa: 17%/70% 10
+19:38:11  queue: 0  pods: 10  hpa: 17%/70% 10
+19:38:16  queue: 0  pods: 10  hpa: 17%/70% 10
+19:38:21  queue: 0  pods: 5  hpa: 17%/70% 10
+19:38:27  queue: 0  pods: 5  hpa: 17%/70% 10
+19:38:32  queue: 0  pods: 5  hpa: 17%/70% 10
+19:38:37  queue: 0  pods: 5  hpa: 12%/70% 5
+19:38:43  queue: 0  pods: 5  hpa: 12%/70% 5
+19:38:48  queue: 0  pods: 5  hpa: 12%/70% 5
+19:38:53  queue: 0  pods: 5  hpa: 12%/70% 5
+19:38:59  queue: 0  pods: 5  hpa: 12%/70% 5
+19:39:04  queue: 0  pods: 5  hpa: 12%/70% 5
+19:39:09  queue: 0  pods: 5  hpa: 12%/70% 5
+19:39:15  queue: 0  pods: 5  hpa: 12%/70% 5
+19:39:20  queue: 0  pods: 3  hpa: 12%/70% 5
+19:39:26  queue: 0  pods: 3  hpa: 12%/70% 5
+19:39:31  queue: 0  pods: 3  hpa: 12%/70% 5
+19:39:37  queue: 0  pods: 3  hpa: 11%/70% 3
+19:39:42  queue: 0  pods: 3  hpa: 11%/70% 3
+19:39:47  queue: 0  pods: 3  hpa: 11%/70% 3
+19:39:53  queue: 0  pods: 3  hpa: 11%/70% 3
+19:39:58  queue: 0  pods: 3  hpa: 11%/70% 3
+19:40:03  queue: 0  pods: 3  hpa: 11%/70% 3
+19:40:08  queue: 0  pods: 3  hpa: 11%/70% 3
+19:40:14  queue: 0  pods: 3  hpa: 11%/70% 3
+19:40:19  queue: 0  pods: 3  hpa: 11%/70% 3
+19:40:24  queue: 0  pods: 2  hpa: 10%/70% 3
+19:40:30  queue: 0  pods: 2  hpa: 10%/70% 3
+19:40:35  queue: 0  pods: 2  hpa: 10%/70% 3
+19:40:40  queue: 0  pods: 2  hpa: 10%/70% 2
+19:40:45  queue: 0  pods: 2  hpa: 10%/70% 2
+19:40:51  queue: 0  pods: 2  hpa: 10%/70% 2
+19:40:56  queue: 0  pods: 2  hpa: 10%/70% 2
+19:41:01  queue: 0  pods: 2  hpa: 10%/70% 2
+19:41:06  queue: 0  pods: 2  hpa: 10%/70% 2
+19:41:12  queue: 0  pods: 2  hpa: 10%/70% 2
+19:41:17  queue: 0  pods: 2  hpa: 10%/70% 2
+19:41:22  queue: 0  pods: 2  hpa: 11%/70% 2
+19:41:28  queue: 0  pods: 2  hpa: 11%/70% 2
+19:41:33  queue: 0  pods: 2  hpa: 11%/70% 2
+19:41:38  queue: 0  pods: 2  hpa: 11%/70% 2
+19:41:44  queue: 0  pods: 2  hpa: 11%/70% 2
+19:41:49  queue: 0  pods: 2  hpa: 11%/70% 2
+19:41:54  queue: 0  pods: 2  hpa: 11%/70% 2
