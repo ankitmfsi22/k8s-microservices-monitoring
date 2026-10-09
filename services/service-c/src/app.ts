@@ -1,4 +1,5 @@
-import express, { Request, Response } from 'express';
+import type { Request, Response } from 'express';
+import express from 'express';
 import { redis } from './redis';
 import { getStats } from './stats';
 import { register, refreshMetrics } from './metrics';

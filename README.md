@@ -2,12 +2,12 @@
 
 A queue-based Node.js microservices system that processes CPU-intensive jobs, auto-scales workers with Kubernetes HPA, and is monitored with Prometheus and Grafana.
 
-| Service | Role | Port |
-| --- | --- | --- |
-| Service A | Job Submitter API, pushes jobs to Redis | 3000 |
+| Service   | Role                                                                 | Port |
+| --------- | -------------------------------------------------------------------- | ---- |
+| Service A | Job Submitter API, pushes jobs to Redis                              | 3000 |
 | Service B | Worker, consumes jobs and runs CPU-heavy tasks (horizontally scaled) | 3001 |
-| Service C | Stats aggregator, exposes job counts and queue length | 3002 |
-| Redis | Job queue, job records and counters | 6379 |
+| Service C | Stats aggregator, exposes job counts and queue length                | 3002 |
+| Redis     | Job queue, job records and counters                                  | 6379 |
 
 ## Tech Stack
 
@@ -32,34 +32,35 @@ k8s-microservices-monitoring/
 
 ### Service A – Job Submitter
 
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| POST | `/submit` | Submit a job. Body: `{ "taskType": "primes" \| "bcrypt" \| "sort" }`. If omitted, a random task type is picked. |
-| GET | `/status/:id` | Get job status and result |
-| GET | `/health` | Liveness check |
-| GET | `/ready` | Readiness check (Redis connectivity) |
+| Method | Endpoint      | Description                                                                                                     |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------- |
+| POST   | `/submit`     | Submit a job. Body: `{ "taskType": "primes" \| "bcrypt" \| "sort" }`. If omitted, a random task type is picked. |
+| GET    | `/status/:id` | Get job status and result                                                                                       |
+| GET    | `/health`     | Liveness check                                                                                                  |
+| GET    | `/ready`      | Readiness check (Redis connectivity)                                                                            |
 
 ### Service B – Worker
 
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| GET | `/metrics` | Prometheus metrics |
-| GET | `/health` | Liveness check |
-| GET | `/ready` | Readiness check |
+| Method | Endpoint   | Description        |
+| ------ | ---------- | ------------------ |
+| GET    | `/metrics` | Prometheus metrics |
+| GET    | `/health`  | Liveness check     |
+| GET    | `/ready`   | Readiness check    |
 
 CPU-intensive tasks:
+
 - `primes` – count primes up to 100,000
 - `bcrypt` – bcrypt hashing with 10 salt rounds
 - `sort` – generate and sort 100,000 random integers
 
 ### Service C – Stats
 
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| GET | `/stats` | Job counts, average processing time and queue length |
-| GET | `/metrics` | Prometheus metrics |
-| GET | `/health` | Liveness check |
-| GET | `/ready` | Readiness check |
+| Method | Endpoint   | Description                                          |
+| ------ | ---------- | ---------------------------------------------------- |
+| GET    | `/stats`   | Job counts, average processing time and queue length |
+| GET    | `/metrics` | Prometheus metrics                                   |
+| GET    | `/health`  | Liveness check                                       |
+| GET    | `/ready`   | Readiness check                                      |
 
 ## Job Flow
 
@@ -72,27 +73,27 @@ Job status lifecycle: `queued → processing → completed / failed`
 
 ## Redis Data Model
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `jobs:queue` | List | Job IDs waiting to be processed (FIFO) |
-| `job:<id>` | Hash | Job details: taskType, status, result, timestamps, duration |
-| `stats:submitted` | String | Total jobs submitted |
-| `stats:completed` | String | Total jobs completed |
-| `stats:failed` | String | Total jobs failed |
-| `stats:total_processing_time` | String | Sum of processing time (seconds) |
+| Key                           | Type   | Description                                                 |
+| ----------------------------- | ------ | ----------------------------------------------------------- |
+| `jobs:queue`                  | List   | Job IDs waiting to be processed (FIFO)                      |
+| `job:<id>`                    | Hash   | Job details: taskType, status, result, timestamps, duration |
+| `stats:submitted`             | String | Total jobs submitted                                        |
+| `stats:completed`             | String | Total jobs completed                                        |
+| `stats:failed`                | String | Total jobs failed                                           |
+| `stats:total_processing_time` | String | Sum of processing time (seconds)                            |
 
 ## Prometheus Metrics
 
-| Service | Metric | Type |
-| --- | --- | --- |
-| B | `jobs_processed_total{task_type}` | Counter |
-| B | `job_processing_time_seconds{task_type}` | Histogram |
-| B | `job_errors_total{task_type}` | Counter |
-| C | `total_jobs_submitted` | Gauge |
-| C | `total_jobs_completed` | Gauge |
-| C | `total_jobs_failed` | Gauge |
-| C | `queue_length` | Gauge |
-| C | `avg_job_processing_time_seconds` | Gauge |
+| Service | Metric                                   | Type      |
+| ------- | ---------------------------------------- | --------- |
+| B       | `jobs_processed_total{task_type}`        | Counter   |
+| B       | `job_processing_time_seconds{task_type}` | Histogram |
+| B       | `job_errors_total{task_type}`            | Counter   |
+| C       | `total_jobs_submitted`                   | Gauge     |
+| C       | `total_jobs_completed`                   | Gauge     |
+| C       | `total_jobs_failed`                      | Gauge     |
+| C       | `queue_length`                           | Gauge     |
+| C       | `avg_job_processing_time_seconds`        | Gauge     |
 
 ## Run Locally
 
@@ -107,6 +108,7 @@ cd services/service-a && npm install && npm run dev
 cd services/service-b && npm install && npm run dev
 cd services/service-c && npm install && npm run dev
 ```
-## High Level Diagram
-<img width="791" height="526" alt="Screenshot 2026-10-05 at 7 43 15 PM" src="https://github.com/user-attachments/assets/f6f1a2b2-9a4b-46e1-8109-f52f2769dece" />
 
+## High Level Diagram
+
+<img width="791" height="526" alt="Screenshot 2026-10-05 at 7 43 15 PM" src="https://github.com/user-attachments/assets/f6f1a2b2-9a4b-46e1-8109-f52f2769dece" />

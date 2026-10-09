@@ -3,7 +3,7 @@ import { createApp } from './app';
 import { redis, blockingRedis, connectRedis } from './redis';
 import { runWorker, stopWorker } from './worker';
 
- async function start(): Promise<void> {
+async function start(): Promise<void> {
   await connectRedis();
 
   const server = createApp().listen(config.port, () => {

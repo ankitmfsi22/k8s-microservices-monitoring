@@ -38,8 +38,14 @@ describe('processJob', () => {
     await processJob('job-1');
 
     const multi = mockRedis.multi();
-    expect(mockRedis.hSet).toHaveBeenCalledWith('job:job-1', expect.objectContaining({ status: 'processing' }));
-    expect(multi.hSet).toHaveBeenCalledWith('job:job-1', expect.objectContaining({ status: 'completed', result: 'sorted 10 integers' }));
+    expect(mockRedis.hSet).toHaveBeenCalledWith(
+      'job:job-1',
+      expect.objectContaining({ status: 'processing' }),
+    );
+    expect(multi.hSet).toHaveBeenCalledWith(
+      'job:job-1',
+      expect.objectContaining({ status: 'completed', result: 'sorted 10 integers' }),
+    );
     expect(multi.incr).toHaveBeenCalledWith('stats:completed');
     expect(jobsProcessed.inc).toHaveBeenCalledWith({ task_type: 'sort' });
     expect(jobProcessingTime.observe).toHaveBeenCalled();
@@ -52,7 +58,10 @@ describe('processJob', () => {
     await processJob('job-2');
 
     const multi = mockRedis.multi();
-    expect(multi.hSet).toHaveBeenCalledWith('job:job-2', expect.objectContaining({ status: 'failed' }));
+    expect(multi.hSet).toHaveBeenCalledWith(
+      'job:job-2',
+      expect.objectContaining({ status: 'failed' }),
+    );
     expect(multi.incr).toHaveBeenCalledWith('stats:failed');
     expect(jobErrors.inc).toHaveBeenCalledWith({ task_type: 'unknown' });
     expect(jobsProcessed.inc).not.toHaveBeenCalled();

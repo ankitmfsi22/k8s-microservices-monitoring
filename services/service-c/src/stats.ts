@@ -14,7 +14,7 @@ export async function getStats(): Promise<Stats> {
     .multi()
     .mGet([KEYS.submitted, KEYS.completed, KEYS.failed, KEYS.totalProcessingTime])
     .lLen(KEYS.queue)
-    .exec()) as [Array<string | null>, number];
+    .exec()) as [(string | null)[], number];
 
   const [submitted, completed, failed, totalTime] = counters.map((v) => Number(v) || 0);
 

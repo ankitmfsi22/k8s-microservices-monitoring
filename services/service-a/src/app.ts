@@ -1,6 +1,8 @@
-import express, { Request, Response } from 'express';
+import type { Request, Response } from 'express';
+import express from 'express';
 import { randomUUID } from 'node:crypto';
-import { KEYS, TASK_TYPES, TaskType, isTaskType } from './config';
+import type { TaskType } from './config';
+import { KEYS, TASK_TYPES, isTaskType } from './config';
 import { redis } from './redis';
 
 function pickRandomTask(): TaskType {
@@ -12,11 +14,10 @@ export function createApp(): express.Express {
   app.use(express.json());
 
   app.post('/submit', async (req: Request, res: Response) => {
-    const requested: unknown = req.body?.taskType;
-
+    const { taskType: requested } = (req.body ?? {}) as { taskType?: unknown };
     let taskType: TaskType;
     if (requested === undefined) {
-      taskType = pickRandomTask(); 
+      taskType = pickRandomTask();
     } else if (isTaskType(requested)) {
       taskType = requested;
     } else {
